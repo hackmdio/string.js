@@ -183,6 +183,8 @@
 
     describe('- escapeHTML()', function() {
       it('should escape the html', function() {
+        T (S(null).escapeHTML().s === null)
+        T (S(undefined).escapeHTML().s === undefined)
         T (S('<div>Blah & "blah" & \'blah\'</div>').escapeHTML().s ===
              '&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;');
         T (S('&lt;').escapeHTML().s === '&amp;lt;');
@@ -650,6 +652,8 @@
 
     describe('- stripTags([tag1],[tag2],...)', function() {
       it('should strip all of the html tags or tags specified by the parameters', function() {
+        T (S(null).stripTags().s === null)
+        T (S(undefined).stripTags().s === undefined)
         T (S('<p>just <b>some</b> text</p>').stripTags().s === 'just some text')
         T (S('<p>just <b>some</b> text</p>').stripTags('p').s === 'just <b>some</b> text')
       })
@@ -831,6 +835,8 @@
 
     describe('- trim()', function() {
       it('should return the string with leading and trailing whitespace removed', function() {
+        T (S(null).trim().s === null)
+        T (S(undefined).trim().s === undefined)
         T (S('hello ').trim().s === 'hello');
         T (S(' hello ').trim().s === 'hello');
         T (S('\nhello').trim().s === 'hello');
@@ -879,6 +885,8 @@
 
     describe('- unescapeHTML', function() {
       it('should unescape the HTML', function() {
+        T (S(null).unescapeHTML().s === null)
+        T (S(undefined).unescapeHTML().s === undefined)
         T (S('&lt;div&gt;Blah &amp; &quot;blah&quot; &amp; &apos;blah&apos;&lt;/div&gt;').unescapeHTML().s ===
              '<div>Blah & "blah" & \'blah\'</div>');
         T (S('&amp;lt;').unescapeHTML().s === '&lt;');

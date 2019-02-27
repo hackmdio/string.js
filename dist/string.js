@@ -253,6 +253,9 @@ string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
     },
 
     escapeHTML: function() { //from underscore.string
+      if (!this.s) {
+        return new this.constructor(this.s)
+      }
       return new this.constructor(this.s.replace(/[&<>"']/g, function(m){ return '&' + reversedEscapeChars[m] + ';'; }));
     },
 
@@ -512,6 +515,9 @@ string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
     },
 
     stripTags: function() { //from sugar.js
+      if (!this.s) {
+        return new this.constructor(this.s)
+      }
       var s = this.s, args = arguments.length > 0 ? arguments : [''];
       multiArgs(args, function(tag) {
         s = s.replace(RegExp('<\/?' + tag + '[^<>]*>', 'gi'), '');
@@ -576,6 +582,9 @@ string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
     },
 
     trim: function() {
+      if (!this.s) {
+        return new this.constructor(this.s)
+      }
       var s;
       if (typeof __nsp.trim === 'undefined')
         s = this.s.replace(/(^\s*|\s*$)/g, '')
@@ -697,6 +706,9 @@ string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
     },
 
     unescapeHTML: function() { //from underscore.string
+      if (!this.s) {
+        return new this.constructor(this.s)
+      }
       return new this.constructor(this.s.replace(/\&([^;]+);/g, function(entity, entityCode){
         var match;
 
