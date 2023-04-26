@@ -656,6 +656,7 @@
         T (S(undefined).stripTags().s === undefined)
         T (S('<p>just <b>some</b> text</p>').stripTags().s === 'just some text')
         T (S('<p>just <b>some</b> text</p>').stripTags('p').s === 'just <b>some</b> text')
+        T (S('PEKO<<x>script src="https://www.google.com/complete/search?client=chrome&q=123&jsonp=alert(document.domain)//"></<x>script>MIKO').stripTags().s === 'PEKOMIKO')
       })
     })
 
