@@ -519,9 +519,12 @@ string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
         return new this.constructor(this.s)
       }
       var s = this.s, args = arguments.length > 0 ? arguments : [''];
-      multiArgs(args, function(tag) {
-        s = s.replace(RegExp('<\/?' + tag + '[^<>]*>', 'gi'), '');
-      });
+      function stripRecursively(tag) {
+        var regex = RegExp('<\/?' + tag + '[^<>]*>', 'gi');
+        s = s.replace(regex, '');
+        if (s.match(regex)) stripRecursively(tag);
+      }
+      multiArgs(args, stripRecursively)
       return new this.constructor(s);
     },
 
