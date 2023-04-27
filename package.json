@@ -45,6 +45,10 @@
   "main": "lib/string",
   "scripts": {
     "test": "gulp test",
-    "istanbul": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha test/string.test.js"
+    "istanbul": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha test/string.test.js",
+    "prepublishOnly": "gulp build"
+  },
+   "overrides": {
+    "graceful-fs": "^4.2.10"
   }
 }
